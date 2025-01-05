@@ -189,3 +189,5 @@ SELECT Count(*) Quant,
 FROM   [dbo].[tbaluno]
 GROUP  BY strecursoprovaemvideo
 
+SELECT DISTINCT corraca
+FROM   [dbo].[tbaluno] 
