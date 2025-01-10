@@ -127,67 +127,139 @@ GROUP  BY stdeficienciaaltashabilidades;
 select count(*) Quant, 
 	   CorRaca
 from   [dbo].[tbaluno]
-group by CorRaca
+group by CorRaca;
 
 select count(*) Quant, 
 	   PlanoSaude
 from   [dbo].[tbaluno]
-group by PlanoSaude
+group by PlanoSaude;
 
 SELECT Count(*) Quant,
        strecursoauxilioledor
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursoauxilioledor
+GROUP  BY strecursoauxilioledor;
 
 SELECT Count(*) Quant,
        strecursoauxiliotranscricao
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursoauxiliotranscricao
+GROUP  BY strecursoauxiliotranscricao;
 
 SELECT Count(*) Quant,
        strecursoguiainterprete
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursoguiainterprete
+GROUP  BY strecursoguiainterprete;
 
 SELECT Count(*) Quant,
        strecursotradutorinterpretedelibras
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursotradutorinterpretedelibras
+GROUP  BY strecursotradutorinterpretedelibras;
 
 SELECT Count(*) Quant,
        strecursoleituralabial
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursoleituralabial
+GROUP  BY strecursoleituralabial;
 
 SELECT Count(*) Quant,
        strecursomaterialdidaticoprovabraille
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursomaterialdidaticoprovabraille
+GROUP  BY strecursomaterialdidaticoprovabraille;
 
 SELECT Count(*) Quant,
        strecursoprovaampliada
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursoprovaampliada
+GROUP  BY strecursoprovaampliada;
 
 SELECT Count(*) Quant,
        strecursoprovasuperampliada
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursoprovasuperampliada
+GROUP  BY strecursoprovasuperampliada;
 
 SELECT Count(*) Quant,
        strecursocdcomaudio
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursocdcomaudio
+GROUP  BY strecursocdcomaudio;
 
 SELECT Count(*) Quant,
        strecursolinguaportuguesasegundalingua
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursolinguaportuguesasegundalingua
+GROUP  BY strecursolinguaportuguesasegundalingua;
 
 SELECT Count(*) Quant,
        strecursoprovaemvideo
 FROM   [dbo].[tbaluno]
-GROUP  BY strecursoprovaemvideo
+GROUP  BY strecursoprovaemvideo;
 
 SELECT DISTINCT CorRaca
-FROM   [dbo].[tbaluno] 
+FROM   [dbo].[tbaluno]; 
+
+SELECT DISTINCT stpresencafalta
+FROM   [dbo].[tbdiariofrequencia]; 
+
+DROP TABLE IF EXISTS dbo.FrequenciaAlunos
+SELECT 
+    COUNT(*) AS Quant, 
+    IDAluno,  
+    CASE	
+        WHEN stpresencafalta = 'F' THEN 'Falta'
+        WHEN stpresencafalta = 'P' THEN 'Presente'
+        WHEN stpresencafalta = 'J' THEN 'Falta Justificada'
+    END AS StatusPresenca
+INTO dbo.FrequenciaAlunos
+FROM [dbo].[tbdiariofrequencia]
+GROUP BY 
+    IDAluno, 
+    CASE	
+        WHEN stpresencafalta = 'F' THEN 'Falta'
+        WHEN stpresencafalta = 'P' THEN 'Presente'
+        WHEN stpresencafalta = 'J' THEN 'Falta Justificada'
+    END;
+
+DROP TABLE IF EXISTS dbo.FrequenciaDisciplina
+SELECT Count (*)                     Quant,
+       [tbdisciplina].nomedisciplina AS Disciplica,
+       CASE
+         WHEN stpresencafalta = 'F' THEN 'Falta'
+         WHEN stpresencafalta = 'P' THEN 'Presente'
+         WHEN stpresencafalta = 'J' THEN 'Falta Justificada'
+       END                           AS StatusPresenca
+INTO dbo.FrequenciaDisciplina 
+FROM   [dbo].[tbdiarioaula]
+       INNER JOIN [dbo].[tbdiario]
+               ON [tbdiarioaula].iddiario = [tbdiario].iddiario
+       INNER JOIN [dbo].[tbdisciplina]
+               ON [tbdiario].iddisciplina = [tbdisciplina].iddisciplina
+       INNER JOIN [dbo].[tbdiariofrequencia]
+               ON [tbdiarioaula].iddiarioaula =
+                  [tbdiariofrequencia].iddiarioaula
+GROUP  BY [tbdisciplina].nomedisciplina,
+          CASE
+            WHEN stpresencafalta = 'F' THEN 'Falta'
+            WHEN stpresencafalta = 'P' THEN 'Presente'
+            WHEN stpresencafalta = 'J' THEN 'Falta Justificada'
+          END; 
+
+DROP TABLE IF EXISTS dbo.FrequenciaAnoDisciplina
+SELECT Count (*)                     Quant,
+       [tbdisciplina].nomedisciplina AS Disciplica,
+       CASE
+         WHEN stpresencafalta = 'F' THEN 'Falta'
+         WHEN stpresencafalta = 'P' THEN 'Presente'
+         WHEN stpresencafalta = 'J' THEN 'Falta Justificada'
+       END                           AS StatusPresenca,
+	   YEAR(DataAula) Ano
+INTO dbo.FrequenciaAnoDisciplina 
+FROM   [dbo].[tbdiarioaula]
+       INNER JOIN [dbo].[tbdiario]
+               ON [tbdiarioaula].iddiario = [tbdiario].iddiario
+       INNER JOIN [dbo].[tbdisciplina]
+               ON [tbdiario].iddisciplina = [tbdisciplina].iddisciplina
+       INNER JOIN [dbo].[tbdiariofrequencia]
+               ON [tbdiarioaula].iddiarioaula =
+                  [tbdiariofrequencia].iddiarioaula
+GROUP  BY [tbdisciplina].nomedisciplina,
+          CASE
+            WHEN stpresencafalta = 'F' THEN 'Falta'
+            WHEN stpresencafalta = 'P' THEN 'Presente'
+            WHEN stpresencafalta = 'J' THEN 'Falta Justificada'
+          END,
+		  YEAR(DataAula); 

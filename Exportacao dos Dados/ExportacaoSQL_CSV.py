@@ -6,8 +6,7 @@ database = 'FIAP'
 output_folder = r'C:\Users\Alberto Marson\Desktop\Fase 5\Dados do Relatorio'  
 
 tables = [
-    'TbAluno',
-    'AlunoUltimaTurma'
+    'FrequenciaAlunos'
 ]
 
 try:
