@@ -263,3 +263,23 @@ GROUP  BY [tbdisciplina].nomedisciplina,
             WHEN stpresencafalta = 'J' THEN 'Falta Justificada'
           END,
 		  YEAR(DataAula); 
+
+DROP TABLE IF EXISTS [dbo].[ProfessorDisciplinas]
+SELECT     [TbProfessor].NomeProfessor,
+           DataNascimento,
+           DataAdmissao,
+           NomeDisciplina AS disciplina
+INTO       [dbo].[ProfessorDisciplinas]
+FROM       [dbo].[TbProfessor]
+INNER JOIN [dbo].[TbProfessorDisciplina]
+ON         [TbProfessor].idprofessor = [TbProfessorDisciplina].idprofessor
+INNER JOIN [dbo].[TbDisciplina]
+ON         [TbProfessorDisciplina].iddisciplina = [TbDisciplina].iddisciplina
+WHERE      stativo = 'True';
+
+SELECT Count(*) Quant,
+       nomeprofessor
+FROM   [dbo].[professordisciplinas]
+GROUP  BY nomeprofessor
+HAVING Count(*) > 1 
+ORDER BY 1 DESC;
