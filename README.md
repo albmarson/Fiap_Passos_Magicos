@@ -6,7 +6,7 @@ Este repositório reúne os arquivos e códigos relacionados ao estudo proposto 
 
 Toda a parte de extração, análise e manipulação de dados está documentada neste repositório, organizada nas seguintes pastas: `Exportação dos Dados`, `Importação dos Dados` e `Exportação dos Dados`.
 
-A apresentação dos dados foi elaborada utilizando o `Power BI`, permitindo o desenvolvimento de um dashboard interativo e intuitivo. Essa solução facilita a exploração dos insights gerados, proporcionando clareza e objetividade na análise. O dashboard está disponível atráves do seguinte link:  [Datathon Passos Mágicos - Power BI]([https://albertomarson.com.br](https://app.powerbi.com/view?r=eyJrIjoiOTU3N2M1OTItMjNmMy00Njk0LTk0N2MtYWEyZTRmZGMwMzIwIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9)).
+A apresentação dos dados foi elaborada utilizando o `Power BI`, permitindo o desenvolvimento de um dashboard interativo e intuitivo. Essa solução facilita a exploração dos insights gerados, proporcionando clareza e objetividade na análise. O dashboard está disponível atráves do seguinte link:  [Datathon Passos Mágicos - Power BI]([https://albertomarson.com.br](https://app.powerbi.com/view?r=eyJrIjoiOTU3N2M1OTItMjNmMy00Njk0LTk0N2MtYWEyZTRmZGMwMzIwIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9).
 
 Além disso, a apresentação criada para o pitch, juntamente com a respectiva gravação, está disponível na pasta `Pitch do Datathon`. 
 
@@ -22,7 +22,7 @@ This repository contains the files and code related to the study proposed by FIA
 
 All aspects of data extraction, analysis, and manipulation are documented in this repository, organized into the following folders: `Data Export`, `Data Import`, and `Data Export`.
 
-The data presentation was developed using `Power BI`, enabling the creation of an interactive and intuitive dashboard. This solution facilitates the exploration of the generated insights, providing clarity and objectivity in the analysis. The dashboard is available at the following link: [Datathon Passos Mágicos - Power BI]([https://albertomarson.com.br](https://app.powerbi.com/view?r=eyJrIjoiOTU3N2M1OTItMjNmMy00Njk0LTk0N2MtYWEyZTRmZGMwMzIwIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9)).
+The data presentation was developed using `Power BI`, enabling the creation of an interactive and intuitive dashboard. This solution facilitates the exploration of the generated insights, providing clarity and objectivity in the analysis. The dashboard is available at the following link: [Datathon Passos Mágicos - Power BI]([https://albertomarson.com.br](https://app.powerbi.com/view?r=eyJrIjoiOTU3N2M1OTItMjNmMy00Njk0LTk0N2MtYWEyZTRmZGMwMzIwIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9).
 
 Additionally, the presentation prepared for the pitch, along with the corresponding recording, is available in the folder `Datathon Pitch`.
 
